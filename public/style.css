@@ -40,7 +40,7 @@ nav ul li a {
   position: relative;
 }
 nav ul li a:hover {
-  color: gray;
+  color: rgb(247, 208, 37);
 }
 nav ul li a::before {
   content: "";
@@ -62,6 +62,11 @@ nav ul li a i {
   box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.048);
   padding: 10px;
   border-radius: 50%;
+}
+
+.img-fluid{
+      height: 66px;
+      width: 77px;
 }
 .burger {
   cursor: pointer;
@@ -110,7 +115,7 @@ nav ul li a i {
   z-index: 999;
 }
 .slider {
-  background-color: #FAFF00;
+  background-color: #e892f0;
   position: fixed;
   top: 0;
   left: 0;
