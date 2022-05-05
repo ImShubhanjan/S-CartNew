@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
     <link rel="shortcut icon" href="./img/favicon2.png" type="image/png" />
     <link rel="stylesheet" href="/public/style.css">
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
 
     <title>S-Cart :: Welcome Buddy</title>
 </head>
@@ -36,10 +37,18 @@
             <li>
                 <a href="#"><i class="fas fa-heart"></i></a>
             </li>
+
             <li>
                 <a href="#"><i class="fas fa-shopping-bag"></i></a>
             </li>
+
+            <li class="user-link">
+               <a href="login.html"> <i class='fas fa-user'></i> </a>
+            </li>
+
         </ul>
+
+        
         <div class="burger">
             <div class="line1"></div>
             <div class="line2"></div>
@@ -51,16 +60,17 @@
         <div class="container-fluid">
             <div class="row text-md-start text-center">
                 <div class="col-lg-4">
-                    <h6 class="text-uppercase mt-5 pt-md-5 rt">Kid's Zone</h6>
-                    <div class="line mb-4 rt"></div>
+                    <h6 class="feature-title text-uppercase mt-5 pt-md-5 rt">Kid's Zone</h6>
+                    <!-- <div class="line mb-4 rt"></div> -->
                     <h1 class="dss rt">Gift Pack for Kids</h1>
-                    <p class="my-4 rt">INR 250</p>
+                    <img src="img/kids.png" class="image-kids rt" alt="Kids">
+                    <p class="my-4 rt">&#8377;250.00</p>
                     <button type="button" class="rt">Buy Now <i class="fas fa-angle-right"></i></button>
                 </div>
-                <div class="col-lg-8 rt mt-md-0 mt-7 d-flex justify-content-end align-items-center">
-                    <img src="img/kids.png" class="img-fluid rt" alt="">
+                <!-- <div class="col-lg-8 rt mt-md-0 mt-7 d-flex ">
+                    <img src="img/kids.png" class="image-kids rt" alt="Kids" >
                     <div class="imgg rt"></div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -86,16 +96,13 @@
         <div class="contanier-fluid">
             <div class="row d-flex flex-lg-row flex-column-reverse">
                 <div class="col-lg-4 sol">
-                    <img src="img/shoe2.png" class="shoe sol" alt="">
+                    <img src="img/gift.png" class="gift-image shoe sol" alt="">
                 </div>
                 <div class="col-lg-8 mb-5 pe-0 d-flex flex-column align-content-end align-items-start">
-                    <h6 class="top">FEATURES</h6>
-                    <h1 class="display-1 text-uppercase top">Bring The Future
-                        to Light</h1>
-                    <p class="w-75 top">The Nike SB Nyjah Free 2 is a sequel worthy of its predecessor. Inspired by the
-                        iconic Nike Air
-                        Zoom Spiridon, the original rubber design has been updated with mesh panels to help your feet
-                        stay cool through your hottest skate sessions.</p>
+                    <h5 class="top feature-title">FEATURED PRODUCTS</h5>
+                    <h2 class="display-1 text-uppercase top">Bring The Future
+                        to Light</h2>
+                    <p class="w-75 top"></p>
                     <div class="d-flex justify-content-evenly align-items-center top">
                         Colors :
                         <div class="color1 ms-2 top"></div>
@@ -104,17 +111,18 @@
                         <div class="color4 ms-2 top"></div>
                     </div>
                     <span class="xet sag"></span>
-                    <div class="d-flex mt-4 justify-content-evenly align-items-center text-lowercase top">
+                    <!-- <div class="d-flex mt-4 justify-content-evenly align-items-center text-lowercase top">
                         Size :
                         <div class="size ms-2 top">UK 5.5</div>
                         <div class="size ms-2 top">EU 39</div>
                         <div class="size ms-2 top">UK 6.5</div>
                         <div class="size ms-2 top">UK 7.5</div>
-                    </div>
+                    </div> -->
 
                     <div class="d-flex mt-4">
-                        <button type="button" class="btn1 me-4 sol">Add to bag <i class="fas fa-shopping-bag"></i></button>
-                        <button type="button" class="btn2 sag">wishlist<i class="far fa-heart ms-1"></i></button>
+                        <button type="button" class="btn1 me-4 sol">Add to bag <i
+                                class="fas fa-shopping-bag"></i></button>
+                        <button type="button" class="btn2 sag">Wishlist<i class="far fa-heart ms-1"></i></button>
                     </div>
 
                 </div>
@@ -125,8 +133,8 @@
     <section class="products my-5">
         <div class="row text-center">
             <div class="col-12 fs-1 my-4">
-                <h4 class="top">Categories</h4>
-                <p class="top">Similar  product</p>
+                <h4 class="top feature-title" style="color: black;">CATEGORIES</h4>
+                <p class="top">Similar product</p>
             </div>
         </div>
         <div class="row my-4">
@@ -134,60 +142,45 @@
                 <div class="bg3 d-flex justify-content-center align-items-center">
                     <img src="img/PikPng 1.png" class="img-fluid" alt="">
                 </div>
-                <div class="d-flex my-3">
-                    <div class="color1 me-2"></div>
-                    <div class="color2 me-2"></div>
-                    <div class="color3 me-2"></div>
-                    <div class="color4 me-2"></div>
-                </div>
+
                 <p>Nike Leron X1</p>
-                <p class="price">$75.00</p>
-                <button type="button">Add To Cart<i class="fas fa-shopping-bag ms-2"></i></button>
+                <p class="price">&#8377;75.00</p>
+                <button type="button" class="bttn">Add To Cart<i class="fas fa-shopping-bag ms-2"></i></button>
             </div>
             <div class="col-lg-3 top col-md-6 my-4 d-flex  justify-content-center flex-column align-items-center">
                 <div class="bg4 d-flex justify-content-center align-items-center">
                     <img src="img/kisspng-nike-free-air-force-sneakers-shoe-men-shoes-5abc7d3a14d6f4 1.png" alt=""
                         class="img-fluid mb-5 pb-4 pe-4">
                 </div>
-                <div class="d-flex my-3">
+                <!-- <div class="d-flex my-3">
                     <div class="color1 me-2"></div>
                     <div class="color2 me-2"></div>
                     <div class="color3 me-2"></div>
                     <div class="color4 me-2"></div>
-                </div>
-                <p>Nike Leron X1</p>
-                <p class="price">$75.00</p>
-                <button type="button">Add To Cart<i class="fas fa-shopping-bag ms-2"></i></button>
+                </div> -->
+                <p>Lorem ipsum dolor sit.</p>
+                <p class="price">&#8377;75.00</p>
+                <button type="button" class="bttn">Add To Cart<i class="fas fa-shopping-bag ms-2"></i></button>
             </div>
             <div class="col-lg-3 top col-md-6 my-4 d-flex  justify-content-center flex-column align-items-center">
                 <div class="bg3 d-flex justify-content-center align-items-center">
                     <img src="img/imgbin_nike-mens-air-zoom-pegasus-33-running-shoe-sports-shoes-png 1.png" alt=""
                         class="img-fluid">
                 </div>
-                <div class="d-flex my-3">
-                    <div class="color1 me-2"></div>
-                    <div class="color2 me-2"></div>
-                    <div class="color3 me-2"></div>
-                    <div class="color4 me-2"></div>
-                </div>
-                <p>Nike Leron X1</p>
-                <p class="price">$75.00</p>
-                <button type="button">Add To Cart<i class="fas fa-shopping-bag ms-2"></i></button>
+               
+                <p>Lorem, ipsum dolor.</p>
+                <p class="price">&#8377;75.00</p>
+                <button type="button" class="bttn">Add To Cart<i class="fas fa-shopping-bag ms-2"></i></button>
             </div>
             <div class="col-lg-3 top col-md-6 my-4 d-flex  justify-content-center flex-column align-items-center">
                 <div class="bg3 d-flex justify-content-center align-items-center">
                     <img src="img/imgbin_nike-lebron-15-basketball-shoe-sports-shoes-png 1.png" alt=""
                         class="img-fluid mb-5 pb-4 pe-4">
                 </div>
-                <div class="d-flex my-3">
-                    <div class="color1 me-2"></div>
-                    <div class="color2 me-2"></div>
-                    <div class="color3 me-2"></div>
-                    <div class="color4 me-2"></div>
-                </div>
-                <p>Nike Leron X1</p>
-                <p class="price">$75.00</p>
-                <button type="button">Add To Cart<i class="fas fa-shopping-bag ms-2"></i></button>
+                
+                <p>Lorem, ipsum dolor.</p>
+                <p class="price">&#8377;75.00</p>
+                <button type="button" class="bttn">Add To Cart<i class="fas fa-shopping-bag ms-2"></i></button>
             </div>
         </div>
     </section>
@@ -218,7 +211,7 @@
                     <a href="#home" id="home"><img src="img/Vector (14).png" alt=""></a>
                     <p class="text-white mt-3">Stay Updated with Latest News and Products</p>
                     <div class="bg-transparent mb-4">
-                        <input type="email" class="bg-transparent" placeholder="enter your email box"><i
+                        <input type="email" class="bg-transparent" placeholder="Enter your E-mail"><i
                             class="fas fa-angle-right fd"></i>
                     </div>
                 </div>
@@ -236,7 +229,7 @@
                     <ul>
                         <li class="mb-2"><a href="#">News</a></li>
                         <li class="mb-2"><a href="#">Careers</a></li>
-                        <li class="mb-2"><a href="#">investors</a></li>
+                        <li class="mb-2"><a href="#">Investors</a></li>
                         <li class="mb-2"><a href="#"> Sustainability</a></li>
                     </ul>
                 </div>
@@ -258,6 +251,111 @@
             </div>
         </div>
     </footer>
+
+    <!-- <div class="user-form">
+        <div class="close-form d-flex"><i class="bx bx-x"></i></div>
+        <div class="form-wrapper container">
+            <div class="user login">
+                <div class="img-box">
+                    <img src="./img/login.svg" alt="" />
+                </div>
+                <div class="form-box">
+                    <div class="top">
+                        <p>
+                            Not a member?
+                            <span data-id="#ff0066">Register now</span>
+                        </p>
+                    </div>
+                    <form action="">
+                        <div class="form-control">
+                            <h2>Hello Again!</h2>
+                            <p>Welcome back you've been missed.</p>
+                            <input type="text" placeholder="Enter Username" />
+                            <div>
+                                <input type="password" placeholder="Password" />
+                                <div class="icon form-icon">
+                                     <img src="./img/eye.svg" alt="" /> 
+                                </div>
+                            </div>
+                            <span>Recovery Password</span>
+                            <input type="Submit" value="Login" />
+                        </div>
+                        <div class="form-control">
+                            <p>Or continue with</p>
+                            <div class="icons">
+                                <div class="icon">
+                                    <img src="./img/search.svg" alt="" />
+                                </div>
+                                <div class="icon">
+                                    <img src="./img/apple.svg" alt="" />
+                                </div>
+                                <div class="icon">
+                                    <img src="./img/facebook.svg" alt="" />
+                                </div>
+                                <div class="icon">
+                                    <img src="./img/github.svg" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div> 
+            </div> 
+
+            Register
+            <div class="user signup">
+                <div class="form-box">
+                    <div class="top">
+                        <p>
+                            Already a member?
+                            <span data-id="#1a1aff">Login now</span>
+                        </p>
+                    </div>
+                    <form action="">
+                        <div class="form-control">
+                            <h2>Welcome Buddy!</h2>
+                            <p>It's good to have you.</p>
+                            <input type="email" placeholder="Enter Email" />
+                            <div>
+                                <input type="password" placeholder="Password" />
+                                <div class="icon form-icon">
+                                    <img src="./img/eye.svg" alt="" />
+                                </div>
+                            </div>
+                            <div>
+                                <input type="password" placeholder="Confirm Password" />
+                                <div class="icon form-icon">
+                                    <img src="./img/eye.svg" alt="" />
+                                </div>
+                            </div>
+                            <input type="Submit" value="Register" />
+                        </div>
+                        <div class="form-control">
+                            <p>Or continue with</p>
+                            <div class="icons">
+                                <div class="icon">
+                                    <img src="./img/search.svg" alt="" />
+                                </div>
+                                <div class="icon">
+                                    <img src="./img/apple.svg" alt="" />
+                                </div>
+                                <div class="icon">
+                                    <img src="./img/facebook.svg" alt="" />
+                                </div>
+                                <div class="icon">
+                                    <img src="./img/github.svg" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="img-box">
+                    <img src="./img/trial.svg" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"

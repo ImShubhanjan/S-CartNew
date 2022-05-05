@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="shortcut icon" href="./img/favicon2.png" type="image/png" />
+    <link rel="stylesheet" href="/public/style2.css">
+    <link rel="stylesheet" href="/public/style.css">
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+    <title>S-Cart :: Register or Login </title>
+</head>
+
+<body>
+    <div class="loader_bg"> 
+        <div class="loader">
+            <!-- <h1>Welcome to Login and Registration</h1> -->
+        </div>
+     </div>
+
+
+    <div class="user-form">
+        <div class="close-form d-flex"><a href="index.html"><i class="bx bx-x"></i></a></div>
+        <div class="form-wrapper container">
+            <div class="user login">
+                <div class="img-box">
+                    <img src="./img/login.svg" alt="" />
+                </div>
+                <div class="form-box">
+                    <div class="top">
+                        <h5>
+                            Not a member?
+                            <span data-id="#ff0066" class="register-btn">Register now</span>
+                        </h5>
+                    </div>
+                    <form action="">
+                        <div class="form-control">
+                            <h2 style="text-decoration: underline">LOGIN</h2>
+                            <p>Welcome back, you've been missed </p>
+                            <input type="text" placeholder="Enter Username" />
+                            <div>
+                                <input type="password" placeholder="Password" />
+                                <div class="icon form-icon">
+                                    <!-- <img src="./img/eye.svg" alt="" /> -->
+                                </div>
+                            </div>
+                            <span type="button">Forget Password?</span>
+                            <input type="Submit" value="Login" />
+                        </div>
+                        <div class="form-control">
+                            <p>Or continue with</p>
+                            <div class="icons">
+                                <div class="icon">
+                                    <img src="./img/search.svg" alt="" />
+                                </div>
+                                <div class="icon">
+                                    <img src="./img/apple.svg" alt="" />
+                                </div>
+                                <div class="icon">
+                                    <img src="./img/facebook.svg" alt="" />
+                                </div>
+                                <div class="icon">
+                                    <img src="./img/github.svg" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+           
+            <!-- Register -->
+            <div class="user signup">
+                <div class="form-box">
+                    <div class="top">
+                        <h5>
+                            Already a member?
+                            <span data-id="#1a1aff">Login now</span>
+                        </h5>
+                    </div>
+                    <form action="">
+                        <div class="form-control">
+                            <h2 style="text-decoration: underline;">REGISTER</h2>
+                            <p>It's good to have you.</p>
+                            <input type="email" placeholder="Enter Email" />
+                            <div>
+                                <input type="password" placeholder="Password" />
+                                <div class="icon form-icon">
+                                    <!-- <img src="./img/eye.svg" alt="" /> -->
+                                </div>
+                            </div>
+                            <div>
+                                <input type="password" placeholder="Confirm Password" />
+                                <div class="icon form-icon">
+                                    <!-- <img src="./img/eye.svg" alt="" /> -->
+                                </div>
+                            </div>
+                            <input type="Submit" value="Register" />
+                        </div>
+                        <div class="form-control">
+                            <p>Or continue with</p>
+                            <div class="icons">
+                                <div class="icon">
+                                    <img src="./img/search.svg" alt="" />
+                                </div>
+                                <div class="icon">
+                                    <img src="./img/apple.svg" alt="" />
+                                </div>
+                                <div class="icon">
+                                    <img src="./img/facebook.svg" alt="" />
+                                </div>
+                                <div class="icon">
+                                    <img src="./img/github.svg" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="img-box">
+                    <img src="./img/trial.svg" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
+    <script src="./public/design.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        setTimeout(function() {
+            $('.loader_bg').fadeToggle();
+        }, 3000);
+    </script>
+</body>
+
+</html>
