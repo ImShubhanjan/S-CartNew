@@ -292,6 +292,13 @@ nav ul li a i {
   position: relative;
 }
 
+.feature .dss {
+  color: transparent;
+  background: linear-gradient(107.81deg, #5a7ed8 -0.31%, #fbff41 20%, #f035e6 45%, black 30%);
+  -webkit-background-clip: text;
+  animation: animate 10s linear infinite;
+  -webkit-background-size: 500%;
+}
 .feature .shoe {
   position: relative;
   left: 17px;
