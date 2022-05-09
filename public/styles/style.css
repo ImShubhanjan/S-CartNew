@@ -634,4 +634,27 @@ footer .op:hover {
 /* .user-icon {
   cursor:grab;
 } */
-
+body{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.img-box img{
+  width: 20rem;
+}
+.registerForm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.registerForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login img{
+  width: 30rem;
+}

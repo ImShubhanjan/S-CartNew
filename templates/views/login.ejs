@@ -2,133 +2,46 @@
 <html lang="en">
 
 <head>
-    <%- include('../partials/header') %>
-    <title>S-Cart :: Register or Login </title>
+    <%- include('../partials/headerLinks') %>
+    <title>S-Cart :: Welcome Buddy</title>
 </head>
 
 <body>
-    <div class="loader_bg"> 
-        <div class="loader">
-            <!-- <h1>Welcome to Login and Registration</h1> -->
-        </div>
-     </div>
 
-    <% if(message){ %>
-        <h3><%= message %></h3>
-    <% } %>
-    <div class="user-form">
-        <div class="close-form d-flex"><a href="index.html"><i class="bx bx-x"></i></a></div>
-        <div class="form-wrapper container">
-            <div class="user login">
-                <div class="img-box">
-                    <img src="public/img/login.svg" alt="" />
-                </div>
-                <div class="form-box">
-                    <div class="top">
-                        <h5>
-                            Not a member?
-                            <span data-id="#ff0066" class="register-btn">Register now</span>
-                        </h5>
-                    </div>
-                    <form action="">
-                        <div class="form-control">
-                            <h2 style="text-decoration: underline">LOGIN</h2>
-                            <p>Welcome back, you've been missed </p>
-                            <input type="text" placeholder="Enter Username" />
-                            <div>
-                                <input type="password" placeholder="Password" />
-                                <div class="icon form-icon">
-                                    <!-- <img src="./img/eye.svg" alt="" /> -->
-                                </div>
-                            </div>
-                            <span type="button">Forget Password?</span>
-                            <input type="Submit" value="Login" />
-                        </div>
-                        <div class="form-control">
-                            <p>Or continue with</p>
-                            <div class="icons">
-                                <div class="icon">
-                                    <img src="public/img/search.svg" alt="" />
-                                </div>
-                                <div class="icon">
-                                    <img src="public/img/apple.svg" alt="" />
-                                </div>
-                                <div class="icon">
-                                    <img src="public/img/facebook.svg" alt="" />
-                                </div>
-                                <div class="icon">
-                                    <img src="public/img/github.svg" alt="" />
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+    <%- include('../partials/navbar') %>
+    
+    <div class="container">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <div class="img-box login">
+                    <img src="public/img/login.jpg" alt="" />
                 </div>
             </div>
-           
-            <!-- Register -->
-            <div class="user signup">
-                <div class="form-box">
-                    <div class="top">
-                        <h5>
-                            Already a member?
-                            <span data-id="#1a1aff">Login now</span>
-                        </h5>
-                    </div>
-                    <form method="POST" action="/api/auth/register">
-                        <div class="form-control">
-                            <h2 style="text-decoration: underline;">REGISTER</h2>
-                            <p>It's good to have you.</p>
-                            <input type="text" name="username" placeholder="Enter Username" />
-                            <input type="email" name="email" placeholder="Enter Email" />
-                            <div>
-                                <input type="password" name="password" placeholder="Password" />
-                                <div class="icon form-icon">
-                                    <!-- <img src="./img/eye.svg" alt="" /> -->
-                                </div>
-                            </div>
-                            <div>
-                                <input type="password" name="conpassword" placeholder="Confirm Password" />
-                                <div class="icon form-icon">
-                                    <!-- <img src="./img/eye.svg" alt="" /> -->
-                                </div>
-                            </div>
-                            <input type="Submit" value="Register" />
-                        </div>
-                        <div class="form-control">
-                            <p>Or continue with</p>
-                            <div class="icons">
-                                <div class="icon">
-                                    <img src="public/img/search.svg" alt="" />
-                                </div>
-                                <div class="icon">
-                                    <img src="public/img/apple.svg" alt="" />
-                                </div>
-                                <div class="icon">
-                                    <img src="public/img/facebook.svg" alt="" />
-                                </div>
-                                <div class="icon">
-                                    <img src="public/img/github.svg" alt="" />
-                                </div>
+            <div class="col-md-6 registerForm">
+
+                <% if(message){ %>
+                    <h5><%= message %></h5>
+                <% } %>
+                
+                <h2 style="text-decoration: underline">LOGIN</h2>
+                <p>Welcome back, you've been missed </p>
+                <form method="POST" action="/login">
+                        <input type="text" name="username" placeholder="Enter Username" />
+                        <div>
+                            <input type="password" name="password" placeholder="Password" />
+                            <div class="icon form-icon">
+                                <!-- <img src="./img/eye.svg" alt="" /> -->
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="img-box">
-                    <img src="public/img/trial.svg" alt="" />
-                </div>
+                        <input type="Submit" value="Login" />
+
+                </form>
             </div>
         </div>
     </div>
-    
-    <script src="public/main.js"></script>
-    <script src="public/design.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
-        setTimeout(function() {
-            $('.loader_bg').fadeToggle();
-        }, 3000);
-    </script>
-</body>
 
+    <%- include('../partials/footer') %>
+
+</body>
+<%- include('../partials/FooterLinks') %>
 </html>
