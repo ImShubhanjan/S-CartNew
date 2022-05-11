@@ -19,7 +19,7 @@
                     <h1 class="dss rt">Gift Pack for Kids</h1>
                     <img src="public/img/kids.png" class="image-kids rt" alt="Kids">
                     <p class="my-4 rt">&#8377;250.00</p>
-                    <button type="button" class="rt">Buy Now <i class="fas fa-angle-right"></i></button>
+                    <button type="button" class="rt dis-btn">Buy Now <i class="fas fa-angle-right"></i></button>
                 </div>
                 <!-- <div class="col-lg-8 rt mt-md-0 mt-7 d-flex ">
                     <img src="img/kids.png" class="image-kids rt" alt="Kids" >
@@ -57,14 +57,14 @@
                     <h2 class="display-1 text-uppercase top dss">Bring The Future
                         to Light</h2>
                     <p class="w-75 top"></p>
-                    <div class="d-flex justify-content-evenly align-items-center top">
+                    <!-- <div class="d-flex justify-content-evenly align-items-center top">
                         Colors :
                         <div class="color1 ms-2 top"></div>
                         <div class="color2 ms-2 top"></div>
                         <div class="color3 ms-2 top"></div>
                         <div class="color4 ms-2 top"></div>
                     </div>
-                    <span class="xet sag"></span>
+                    <span class="xet sag"></span> -->
                     <!-- <div class="d-flex mt-4 justify-content-evenly align-items-center text-lowercase top">
                         Size :
                         <div class="size ms-2 top">UK 5.5</div>
@@ -74,9 +74,9 @@
                     </div> -->
 
                     <div class="d-flex mt-4">
-                        <button type="button" class="btn1 me-4 sol">Add to bag <i
+                        <button type="button" class="btn1 me-4 sol dis-btn">Add to bag <i
                                 class="fas fa-shopping-bag"></i></button>
-                        <button type="button" class="btn2 sag">Wishlist<i class="far fa-heart ms-1"></i></button>
+                        <!-- <button type="button" class="btn2 sag dis-btn">Wishlist<i class="far fa-heart ms-1"></i></button> -->
                     </div>
 
                 </div>
@@ -92,50 +92,19 @@
             </div>
         </div>
         <div class="row my-4">
-            <div class="col-lg-3 top col-md-6 my-4 d-flex  justify-content-center flex-column align-items-center">
-                <div class="bg3 d-flex justify-content-center align-items-center">
-                    <img src="public/img/PikPng 1.png" class="img-fluid" alt="">
+            <% items.forEach(item => { %>
+                <div class="col-lg-3 top col-md-6 my-4 d-flex  justify-content-center flex-column align-items-center">
+                    <div class="bg3 d-flex justify-content-center align-items-center">
+                        <img src="<%= item.itemImage %>" class="img-fluid" alt="">
+                    </div>
+    
+                    <p><%= item.itemName %></p>
+                    <p class="price">&#8377;<%= item.itemPrice %></p>   
+                    <form method="POST" action="/addtocart/<%= item._id %>">
+                        <button type="submit" class="bttn dis-btn">Add To Cart<i class="fas fa-shopping-bag ms-2"></i></button>
+                    </form>
                 </div>
-
-                <p>Nike Leron X1</p>
-                <p class="price">&#8377;75.00</p>
-                <button type="button" class="bttn">Add To Cart<i class="fas fa-shopping-bag ms-2"></i></button>
-            </div>
-            <div class="col-lg-3 top col-md-6 my-4 d-flex  justify-content-center flex-column align-items-center">
-                <div class="bg4 d-flex justify-content-center align-items-center">
-                    <!-- <img src="public/img/kisspng-nike-free-air-force-sneakers-shoe-men-shoes-5abc7d3a14d6f4 1.png" alt=""
-                        class="img-fluid mb-5 pb-4 pe-4"> -->
-                </div>
-                <!-- <div class="d-flex my-3">
-                    <div class="color1 me-2"></div>
-                    <div class="color2 me-2"></div>
-                    <div class="color3 me-2"></div>
-                    <div class="color4 me-2"></div>
-                </div> -->
-                <p>Lorem ipsum dolor sit.</p>
-                <p class="price">&#8377;75.00</p>
-                <button type="button" class="bttn">Add To Cart<i class="fas fa-shopping-bag ms-2"></i></button>
-            </div>
-            <div class="col-lg-3 top col-md-6 my-4 d-flex  justify-content-center flex-column align-items-center">
-                <div class="bg3 d-flex justify-content-center align-items-center">
-                    <!-- <img src="public/img/imgbin_nike-mens-air-zoom-pegasus-33-running-shoe-sports-shoes-png 1.png" alt=""
-                        class="img-fluid"> -->
-                </div>
-               
-                <p>Lorem, ipsum dolor.</p>
-                <p class="price">&#8377;75.00</p>
-                <button type="button" class="bttn">Add To Cart<i class="fas fa-shopping-bag ms-2"></i></button>
-            </div>
-            <div class="col-lg-3 top col-md-6 my-4 d-flex  justify-content-center flex-column align-items-center">
-                <div class="bg3 d-flex justify-content-center align-items-center">
-                    <!-- <img src="public/img/imgbin_nike-lebron-15-basketball-shoe-sports-shoes-png 1.png" alt=""
-                        class="img-fluid mb-5 pb-4 pe-4"> -->
-                </div>
-                
-                <p>Lorem, ipsum dolor.</p>
-                <p class="price">&#8377;75.00</p>
-                <button type="button" class="bttn">Add To Cart<i class="fas fa-shopping-bag ms-2"></i></button>
-            </div>
+            <% })%>
         </div>
     </section>
 

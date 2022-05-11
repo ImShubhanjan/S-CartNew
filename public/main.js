@@ -26,15 +26,20 @@
 //         document.querySelector(":root").style.setProperty("--custom", color);
 //     });
 // });
-
+// document.querySelectorAll(".itemId").forEach((input) => {
+//     input.style.visibility = "hidden";
+// })
 var logged = document.getElementsByClassName('loggedOut');
-console.log(logged);
 if(logged.length > 0){
     document.querySelector(".register").style.visibility = "visible";
     document.querySelector(".login").style.visibility = "visible";
     document.querySelector(".orders").remove();
     document.querySelector(".cart").remove();
     document.querySelector(".logout").remove();
+    //console.log(document.querySelectorAll(".dis-btn").length);
+    document.querySelectorAll(".dis-btn").forEach((button) => {
+        button.remove();
+    })
 }else{
     document.querySelector(".register").remove();
     document.querySelector(".login").remove()

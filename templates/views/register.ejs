@@ -3,51 +3,82 @@
 
 <head>
     <%- include('../partials/headerLinks') %>
-    <title>S-Cart :: Welcome Buddy</title>
+        <title>S-Cart :: Welcome Buddy</title>
 </head>
-
+<style>
+   
+</style>
 <body>
 
     <%- include('../partials/navbar') %>
-    
-    <div class="container">
-        <div class="row col-md-12">
-            <div class="col-md-6">
-                <div class="img-box">
-                    <img src="public/img/register.png" alt="" />
+
+        <div class="container">
+            <div class="row col-md-12">
+                <div class="col-md-6">
+                    <div class="img-box">
+                        <img src="public/img/register.png" alt="" />
+                    </div>
+                </div>
+                <div class="col-md-6 registerForm">
+                    <h1 class="light-text">REGISTER</h1>
+                    <p class="light-text2">It's good to have You here.</p>
+
+                    <div>
+                        <% if(message !=null ) { %>
+                            <div class="alert alert-danger" role="alert">
+                                <div>
+                                    <% if(message){ %>
+                                        <h6>
+                                            <%= message %>
+                                        </h6>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <% } %>
+                    </div>
+
+
+                    <form method="POST" action="/register">
+                        <!-- <div>
+                            <% if(message !=null) { %>
+                                <div class="alert alert-success" role="alert">
+                                    <div>
+                                        <% if(message) { %>
+                                            <h5>
+                                                <%= message %>
+                                            </h5>
+                                            <% } %>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div> -->
+                        <div class="user-contain">
+                            <input type="text" name="username" placeholder="Enter Username" />
+                        </div>
+                        <div class="user-contain">
+                            <input type="email" name="email" placeholder="Enter Email" />
+                        </div>
+                        <div class="user-contain">
+                            <input type="password" name="password" placeholder="Password" />
+                            <div class="icon form-icon">
+                                <!-- <img src="./img/eye.svg" alt="" /> -->
+                            </div>
+                        </div>
+                        <div class="user-contain">
+                            <input type="password" name="conpassword" placeholder="Confirm Password" />
+                            <div class="icon form-icon">
+                                <!-- <img src="./img/eye.svg" alt="" /> -->
+                            </div>
+                        </div>
+                        <input type="submit" value="Register">
+                    </form>
                 </div>
             </div>
-            <div class="col-md-6 registerForm">
-                <h2 style="text-decoration: underline;">REGISTER</h2>
-                <p>It's good to have you.</p>
-
-                <% if(message){ %>
-                    <h5><%= message %></h5>
-                <% } %>
-
-                <form method="POST" action="/register">
-                    <input type="text" name="username" placeholder="Enter Username" />
-                    <input type="email" name="email" placeholder="Enter Email" />
-                    <div>
-                        <input type="password" name="password" placeholder="Password" />
-                        <div class="icon form-icon">
-                            <!-- <img src="./img/eye.svg" alt="" /> -->
-                        </div>
-                    </div>
-                    <div>
-                        <input type="password" name="conpassword" placeholder="Confirm Password" />
-                        <div class="icon form-icon">
-                            <!-- <img src="./img/eye.svg" alt="" /> -->
-                        </div>
-                    </div>
-                    <input type="Submit" value="Register" />
-                </form>
-            </div>
         </div>
-    </div>
 
-    <%- include('../partials/footer') %>
+        <%- include('../partials/footer') %>
 
 </body>
 <%- include('../partials/FooterLinks') %>
+
 </html>
