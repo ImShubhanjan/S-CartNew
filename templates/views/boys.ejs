@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <%- include('../partials/headerLinks') %>
+     <title>S-Cart | Boy's Section</title>
+ </head>
+ <!-- <style>
+     body {
+        background: linear-gradient(to right, rgb(241, 144, 223), rgb(168, 115, 242));
+    }
+ </style> -->
+ <body>
+     <%- include('../partials/navbar') %>
+    <section class="products my-5">
+        <div class="row text-center">
+            <div class="col-12 fs-1 my-4">
+                <h4 class="top feature-title" style="color: black;">BOY'S SECTION</h4>
+                <!-- <p class="top"></p> -->
+            </div>
+        </div>
+        <div class="row my-4">
+            <% boysItems.forEach(item => { %>
+                <div class="col-lg-3 top col-md-6 my-4 d-flex  justify-content-center flex-column align-items-center">
+                    <div class="bg3 d-flex justify-content-center align-items-center">
+                        <img src="<%= item.itemImage %>" class="img-fluid" alt="">
+                    </div>
+    
+                    <p><%= item.itemName %></p>
+                    <p class="price">&#8377;<%= item.itemPrice %></p>   
+                    <form method="POST" action="/addtocart/<%= item._id %>">
+                        <button type="submit" class="bttn dis-btn">Put in Bag<i class="fas fa-shopping-bag ms-2"></i></button>
+                    </form>
+                </div>
+            <% })%>
+        </div>
+    </section>
+    <%- include('../partials/footer') %>
+ </body>
+ <%- include('../partials/footerLinks') %>
+ </html>

@@ -3,7 +3,7 @@
 
 <head>
     <%- include('../partials/headerLinks') %>
-        <title>S-Cart :: Welcome Buddy</title>
+        <title>S-Cart | Login</title>
 </head>
 
 <body>
@@ -27,28 +27,27 @@
                                 <% } %>
                         </div>
                     </div>
-                </div>
 
 
 
 
-                <h1 class="light-text">LOGIN</h1>
-                <p class="light-text2">Welcome back, You've been missed! </p>
-                <form method="POST" action="/login">
-                    <div class="user-contain">
-                        <input type="text" name="username" placeholder="Enter Username" />
-                    </div>
-                    <div class="user-contain">
-                        <input type="password" name="password" placeholder="Password" />
-                        <div class="icon form-icon">
-                            <!-- <img src="./img/eye.svg" alt="" /> -->
+                    <h1 class="light-text">LOGIN</h1>
+                    <p class="light-text2">Welcome back, You've been missed! </p>
+                    <form method="POST" action="/login">
+                        <div class="user-contain">
+                            <input type="text" name="username" placeholder="Enter Username" />
                         </div>
-                    </div>
-                    <input type="submit" value="Login" />
+                        <div class="user-contain">
+                            <input type="password" name="password" placeholder="Password" />
+                            <div class="icon form-icon">
+                                <!-- <img src="./img/eye.svg" alt="" /> -->
+                            </div>
+                        </div>
+                        <input type="submit" value="Login" />
 
-                </form>
+                    </form>
+                </div>
             </div>
-        </div>
         </div>
 
         <%- include('../partials/footer') %>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <%- include("../partials/headerLinks") %>
+    <title>S-Cart | Cart</title>
+</head>
+<body>
+    <%- include("../partials/navbar") %>
+
+    <div class="container">
+        <% products.forEach(product => { %>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div class="image">
+                        <img />
+                    </div>
+                    <div class="info">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        <% })%>
+    </div>
+    
+
+    <%- include("../partials/footer") %>
+</body>
+<%- include("../partials/footerLinks") %>
+</html>

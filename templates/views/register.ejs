@@ -3,7 +3,7 @@
 
 <head>
     <%- include('../partials/headerLinks') %>
-        <title>S-Cart :: Welcome Buddy</title>
+        <title>S-Cart | Register</title>
 </head>
 <style>
    
@@ -24,8 +24,19 @@
                     <p class="light-text2">It's good to have You here.</p>
 
                     <div>
-                        <% if(message !=null ) { %>
+                        <% if(message == null){ %>
+                        <% } else if(message != "User Added Successfully!!" ) { %>
                             <div class="alert alert-danger" role="alert">
+                                <div>
+                                    <% if(message){ %>
+                                        <h6>
+                                            <%= message %>
+                                        </h6>
+                                    <% } %>
+                                </div>
+                            </div>
+                        <% }else{ %>
+                            <div class="alert alert-success" role="alert">
                                 <div>
                                     <% if(message){ %>
                                         <h6>
@@ -34,7 +45,7 @@
                                         <% } %>
                                 </div>
                             </div>
-                            <% } %>
+                        <% } %>
                     </div>
 
 

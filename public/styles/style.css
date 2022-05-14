@@ -71,11 +71,19 @@ nav ul li a i {
   border-radius: 50%;
 }
 
-.img-fluid {
-  height: 66px;
-  width: 77px;
+.img-fluid-logo {
+  height: 47px;
+  width: 50px;
 }
 
+.img-fluid {
+  height: 47px;
+  width: 50px;
+}
+.img-fluid:hover {
+  zoom: 200%;
+    transition: 5s;
+}
 .image-kids {
   height: 601px;
   width: 700px;
@@ -118,6 +126,21 @@ nav ul li a i {
 
 .bttn:hover {
   background: #8be7f5;
+}
+.alert{
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.badge{
+  width: 1.5rem;
+  font-size: 0.5rem;
+}
+.card-body{
+  display: flex;
+  flex-direction: row;
+
 }
 @media (max-width: 720px) {
   body {
@@ -405,6 +428,8 @@ nav ul li a i {
   background: linear-gradient(to right, #FAFF00 -1.06%, #e892f0 100%);
   transition: all 500ms ease-in-out;
 }
+
+
 
 .products h4 {
   color: transparent;

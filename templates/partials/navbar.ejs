@@ -1,29 +1,35 @@
 <nav>
-    <div class="logo"><a href="/"><img src="public/img/Logo.png" class="img-fluid" alt="logo"></a></div>
-    <ul class="nav-links">
+    <div class="logo"><a href="/"><img src="public/img/home.png" class="img-fluid-logo" alt="logo"></a></div>
+    <ul class="nav-links <%= status %>">
         <li>
             <a href="/boys">Boys</a>
         </li>
         <li>
-            <a href="#">Girls</a>
+            <a href="/girls">Girls</a>
         </li>
         <li>
-            <a href="#">Kids</a>
+            <a href="/kids">Kids</a>
         </li>
         <li>
-            <a href="#">Combo Offers</a>
+            <a href="/gifts">Gifts</a>
         </li>
         <!-- <li class="ms-lg-auto">
             <a href="#"><i class="fas fa-search"></i></a>
         </li> -->
         <li class="ms-lg-auto"></li>
 
-        <li class="orders <%= status %>">
+        <li class="orders">
             <a href="#">Orders</a>
         </li>
 
-        <li class="cart <%= status %>">
-            <a href="#">Cart</a>
+        <li class="cart">
+            <a href="/cart">Cart
+                <% if(quantity>0){ %>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        <%= quantity %>
+                    </span>
+                <% } %>
+            </a>
         </li>
 
         <li class="user-link register">
