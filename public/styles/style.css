@@ -618,6 +618,9 @@ footer .op:hover {
   left: 5%;
   top: 20%;
 }
+.card-body img{
+  width: 10rem
+}
 
 @media (max-width: 720px) {
   .home .imgg {

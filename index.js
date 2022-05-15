@@ -363,12 +363,12 @@ app.get("/cart", async (req, res) => {
             cart = [
                 ...cart,
                 details
-            ]
+            ];  
         }
+        //console.log(cart);
+        return res.render("cart", { status: "loggedIn", quantity: cartQuantity, products: cart });
     }
     newFunc();
-    console.log(cart);
-    return res.render("cart", { status: "loggedIn", quantity: cartQuantity, products: cart });
 })
 
 app.get("/logout", (req, res) => {
