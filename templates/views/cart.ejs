@@ -6,23 +6,27 @@
 <body>
     <%- include("../partials/navbar") %>
 
-    <div class="container">
-        <% products.forEach(product => { %>
-            <div class="card mt-4">
-                <div class="card-body">
-                    <div class="image">
-                        <img src="<%= product.image %>" />
-                    </div>
-                    <div class="info">
-                        <h3><%= product.name %></h3>
-                        <p>Price : 💲<%= product.price %></p>
+    <% if(products != null){ %>
+        <div class="container">
+            <% products.forEach(product => { %>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <div class="image">
+                            <img src="<%= product.image %>" />
+                        </div>
+                        <div class="info">
+                            <h3><%= product.name %></h3>
+                            <p>Price : 💲<%= product.price %></p>
+                            <form>
+                                <button type="submit" class="btn btn-danger">Remove From Cart</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <% })%>
-    </div>
+            <% })%>
+        </div>
+    <% } %>
     
-
     <%- include("../partials/footer") %>
 </body>
 <%- include("../partials/footerLinks") %>

@@ -342,7 +342,7 @@ app.get("/cart", async (req, res) => {
     }
     const userCart = await Cart.find({ username: req.cookies.username });
     if (userCart.length == 0) {
-        return res.render("cart", { status: "loggedIn", quantity: null });
+        return res.render("cart", { status: "loggedIn", quantity: null, products: null });
     }
     const cartQuantity = userCart[0].products.length;
 
@@ -358,8 +358,9 @@ app.get("/cart", async (req, res) => {
     }
     const newFunc = async () => {
         for (let i = 0; i < userCart[0].products.length; i++) {
-            const productId = userCart[0].products[0].productId;
+            const productId = userCart[0].products[i].productId;
             const details = await getProductDetails(productId);
+            //console.log(details);
             cart = [
                 ...cart,
                 details
