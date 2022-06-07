@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/headerLinks") %>
+        <title>S-Cart | Checkout</title>
+</head>
+<style>
+    .container {
+        margin: 36px 65px;
+        padding: 30px 30px;
+        border: 1px solid black;
+        box-shadow: 0px 6px 11px 6px rgb(35 28 28 / 24%);
+    }
+
+    .inputname {
+        margin: 13px 13px;
+        padding: 13px 13px;
+        transition: width .2s blue;
+    }
+</style>
+
+<body>
+    <%- include("../partials/navbar")%>
+        <form action="/checkout" method="POST">
+            <div class="container">
+                <h1 class="feature-title" sty>CHECKOUT</h1>
+
+                <div>
+                    <h3>Enter your name:</h3>
+                    <input type="text" placeholder="Full name including middle and last name(if any)" class="inputname"
+                        name="cname" size="50" required />
+                </div>
+                <div>
+                    <h3>Enter your contact number:</h3>
+                    <input type="text" placeholder="Please enter a valid contact number" class="inputname" size="30"
+                        name="cnumber" required />
+                </div>
+                <div>
+                    <h3>Enter your Address:</h3>
+                    <input type="text" placeholder="Full address including house number(if any)" class="inputname"
+                        name="caddress" size="70" required />
+                </div>
+                <div>
+                    <h3>Enter your Landmark(if any): </h3>
+                    <input type="text" placeholder="Near by Public attraction place" class="inputname" size="60"
+                        name="clandmark" />
+                </div>
+                <div>
+                    <h3>Enter your Pin code: </h3>
+                    <input type="text" placeholder="6 Digits only" class="inputname" size="60" name="cpin" required />
+                </div>
+                <button type="submit" class="btn btn-success">Proceed to Pay</button>
+            </div>
+        </form>
+
+        <%- include("../partials/footer") %>
+</body>
+<!-- <script>
+    function payOptions() {
+        window.location.href = "/payment";
+    }
+</script> -->
+<%- include("../partials/footerLinks") %>
+
+</html>

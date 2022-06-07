@@ -33,9 +33,9 @@ var logged = document.getElementsByClassName('loggedOut');
 if(logged.length > 0){
     document.querySelector(".register").style.visibility = "visible";
     document.querySelector(".login").style.visibility = "visible";
-    document.querySelector(".orders").remove();
+    document.querySelector(".order").remove();
     document.querySelector(".cart").remove();
-    document.querySelector(".logout").remove();
+    console.log(document.querySelector(".logout").remove());
     //console.log(document.querySelectorAll(".dis-btn").length);
     document.querySelectorAll(".dis-btn").forEach((button) => {
         button.remove();
@@ -43,7 +43,7 @@ if(logged.length > 0){
 }else{
     document.querySelector(".register").remove();
     document.querySelector(".login").remove()
-    document.querySelector(".orders").style.visibility = "visible";
+    document.querySelector(".order").style.visibility = "visible";
     document.querySelector(".cart").style.visibility = "visible";
     document.querySelector(".logout").style.visibility = "visible";
 }

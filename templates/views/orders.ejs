@@ -2,7 +2,7 @@
 
 <head>
     <%- include("../partials/headerLinks") %>
-        <title>S-Cart | Cart</title>
+        <title>S-Cart | Orders</title>
 </head>
 <style>
     .container {
@@ -17,7 +17,7 @@
     <%- include("../partials/navbar") %>
         <% if(products !=null){ %>
             <div class="container">
-                <h1 class="feature-title">CART</h1>
+                <h1 class="feature-title">Orders</h1>
 
                 <% products.forEach(product=> { %>
                     <div class="card mt-4">
@@ -31,25 +31,20 @@
                                 </h3>
                                 <p>Price : &#8377;<%= product.price %>
                                 </p>
-                                <form method="POST" action="/cart/<%= product.id %>">
-                                    <button type="submit" class="btn btn-danger">Remove From Cart</button>
-                                </form>
                             </div>
                         </div>
                     </div>
-                    <% })%>
+                <% })%>
                         <div>
                             <h4>
                                 Total Price: &#8377; <%= totalPrice %>
                             </h4>
                         </div>
-                        <button type="submit" class="btn btn-success" onclick="checkoutPage()"> Proceed to
-                            Checkout</button>
             </div>
 
-            <% } %>
+        <% } %>
 
-                <%- include("../partials/footer") %>
+        <%- include("../partials/footer") %>
 </body>
 <script>
     function checkoutPage() {

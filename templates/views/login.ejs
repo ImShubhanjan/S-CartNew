@@ -10,45 +10,62 @@
 
     <%- include('../partials/navbar') %>
 
-        <div class="container">
-            <div class="row col-md-12">
-                <div class="col-md-6">
-                    <div class="img-box login">
-                        <img src="public/img/login.jpg" alt="" />
-                    </div>
-                </div>
-                <div>
-                    <div class="alert alert-success" role="alert">
-                        <div>
-                            <% if(message){ %>
-                                <h5>
-                                    <%= message %>
-                                </h5>
-                                <% } %>
-                        </div>
-                    </div>
-
-
-
-
-                    <h1 class="light-text">LOGIN</h1>
-                    <p class="light-text2">Welcome back, You've been missed! </p>
-                    <form method="POST" action="/login">
-                        <div class="user-contain">
-                            <input type="text" name="username" placeholder="Enter Username" />
-                        </div>
-                        <div class="user-contain">
-                            <input type="password" name="password" placeholder="Password" />
-                            <div class="icon form-icon">
-                                <!-- <img src="./img/eye.svg" alt="" /> -->
-                            </div>
-                        </div>
-                        <input type="submit" value="Login" />
-
-                    </form>
+    <div class="container">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <div class="img-box login">
+                    <img src="public/img/login.jpg" alt="" />
                 </div>
             </div>
+            <div class="col-md-6 registerForm">
+                <h1 class="feature-title">LOGIN</h1>
+                <p>Welcome back, You've been missed!</p>
+
+                <div>
+                    <% if(message == null){ %>
+                    <% } else if(message != "User Added Successfully!!" ) { %>
+                        <div class="alert alert-danger" role="alert">
+                            <div>
+                                <% if(message){ %>
+                                    <h6>
+                                        <%= message %>
+                                    </h6>
+                                <% } %>
+                            </div>
+                        </div>
+                    <% }else{ %>
+                        <div class="alert alert-success" role="alert">
+                            <div>
+                                <% if(message){ %>
+                                    <h6>
+                                        <%= message %>
+                                    </h6>
+                                    <% } %>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+
+
+                <form method="POST" action="/login">
+                    
+                    <div class="user-contain">
+                        <input type="text" name="username" placeholder="Enter Username" />
+                    </div>
+                    <div class="user-contain">
+                        <input type="password" name="password" placeholder="Password" />
+                        <div class="icon form-icon">
+                        </div>
+                    </div>
+                   
+                    
+                    <input type="submit" value="Login">
+                </form>
+            </div>
         </div>
+    </div>
+
+
 
         <%- include('../partials/footer') %>
 

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/headerLinks") %>
+        <title>S-Cart | Payment</title>
+</head>
+<style>
+    .container {
+        margin: 36px 65px;
+        padding: 30px 30px;
+        border: 1px solid black;
+        box-shadow: 0px 6px 11px 6px rgb(35 28 28 / 24%);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /* .alert {
+        margin: -88px 37px 21px 23px
+    } */
+
+    .alert-dismissible .btn-close {
+        position: absolute;
+        top: -10px;
+        right: 0;
+        z-index: 2;
+        padding: 1.25rem 1rem;
+    }
+
+    .row-contain {
+        margin: 13px 13px 13px 13px;
+    }
+
+    /* span {
+        margin: 13px 13px 11px 11px;
+        position: relative;
+    } */
+
+    .hovertext:before {
+        content: attr(data-hover);
+        visibility: hidden;
+        opacity: 0;
+        width: 145px;
+        background-color: rgb(238, 211, 112);
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding: 5px 0;
+        transition: opacity 1s ease-in-out;
+        position: absolute;
+        display: inline-block;
+        z-index: 1;
+        left: -130px;
+        top: -44%;
+    }
+
+    .hovertext:hover:before {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .emergency {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .hovertext {
+        position: relative;
+        left: 0.5rem;
+        top: 0.5rem;
+    }
+
+    label {
+        margin-right: 1rem;
+    }
+    .phonepe {
+        height: 16rem;
+    }
+</style>
+
+<body>
+    <%- include("../partials/navbar") %>
+        <div class="row-contain">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                 Your Address was saved Successfully. Now complete the payment to Place order.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                To Know more click<span><i
+                        class='fa fa-info-circle'></i></span>.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            
+        <div class="container">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#normal">
+                Normal Delivery
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="normal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Normal Delivery</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Product will be delivered in 4 to 5 Days(Maximum 7 days due to Bad Weather)
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+                            <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="emergency">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#emergency" onClick="increOriginalAmt()">Emergency Delivery</button>
+                <div class="modal fade" id="emergency" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Emergency Delivery</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="input-group">
+                                    <label>Delivery Day : </label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="day" id="flexRadioDefault2"
+                                            value="100" checked onclick="changeDay1()">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            Tomorrow
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="day" id="flexRadioDefault1"
+                                            value="50" onclick="changeDay2()">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Day after Tomorrow
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label>Additional Payment : </label>
+                                    <p class="additional"></p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick="comeBackToOriginal()">Close</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span
+                    data-hover="If selected, the product(s) will be delivered fast but additional Charges will be added in the whole amount. If no mode is selected Delivery will be of Normal Mode"
+                    class="hovertext light-text"><i class='fa fa-info-circle'></i>
+                </span>
+            </div>
+        </div>
+
+        <div>
+            Actual Price after Emergency Delivery: <p class="totalPrice"><%= totalPrice %></p>
+        </div>
+        <div class="container">
+             <!-- Button trigger modal -->
+             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#online">
+               Online Pay
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="online" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Online Pay</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                           You can Scan the QR or send your Payment in number Specified.
+                            <img src="../../public/img/PhonePeQR_7980192537.png" onSc class="phonepe" alt="">
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" onclick="onlinePayPage()">Done </button>
+                            <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cash">
+               Cash on Delivery
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="cash" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Cash on Delivery</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            You choosed Cash on Delivery. Are you sure you want to continue? 
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-primary" href="/success">Proceed</a>
+                            <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="emergency">
+                <button type="button" class="btn btn-primary">Hold and Pay</span></button>
+                <span data-hover="You can pay a Part of amount Online and left over part by Cash on Delivery"
+                    class="hovertext light-text"><i class='fa fa-info-circle'></i>
+            </div>
+        </div>
+
+        <!-- Button trigger modal
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Launch static backdrop modal
+        </button> -->
+
+        <!-- Modal -->
+        <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Emergency Delivery</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        </div>
+
+        <%- include("../partials/footer") %>
+</body>
+
+<%- include("../partials/footerLinks") %>
+    <script>
+        document.querySelector(".additional").innerHTML = "100";
+        const originalAmount =  document.querySelector(".totalPrice").innerHTML;
+        const changeDay1 = () => {
+            document.querySelector(".additional").innerHTML = 100;
+            document.querySelector(".totalPrice").innerHTML = parseInt(originalAmount)+100;
+        }
+        const changeDay2 = () => {
+            document.querySelector(".additional").innerHTML = 50;
+            document.querySelector(".totalPrice").innerHTML = parseInt(originalAmount)+50;
+        }
+        const increOriginalAmt = () => {
+            document.querySelector(".totalPrice").innerHTML = parseInt(originalAmount)+100;
+        }
+        const comeBackToOriginal = () => {
+            document.querySelector(".totalPrice").innerHTML = originalAmount;
+        }
+        // document.querySelector(".phonepe").remove();
+        // function showQR() {
+        //     document.querySelector(".phonepe").show();
+        // }
+    function onlinePayPage() {
+        window.location.href = "/onlinePay";
+    }
+
+    </script>
+
+</html>

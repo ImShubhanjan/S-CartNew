@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/headerLinks') %>
+        <title>S-Cart | About Us</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        background-color: #fcfdff;
+        font-family: "Franklin Gothic Medium", sans-serif;
+    }
+
+    .container {
+        margin: 20px 40px;
+        color: rgb(12, 0, 0);
+    }
+
+    .heading {
+        font-size: 45px;
+        color: rgb(0, 0, 0);
+    }
+
+    .heading span {
+        font-style: italic;
+        font-size: 30px;
+    }
+
+    .profiles {
+        display: flex;
+        justify-content: space-around;
+        margin: 20px 80px;
+    }
+
+    .profile {
+        flex-basis: 260px;
+    }
+
+    .profile .profile-img {
+        height: 260px;
+        width: 260px;
+        border-radius: 50%;
+        /* filter: grayscale(100%); */
+        cursor: pointer;
+        transition: 400ms;
+    }
+
+    .profile:hover .profile-img {
+        /* filter: grayscale(0); */
+    }
+
+    .user-name {
+        margin-top: 30px;
+        font-size: 30px;
+        display: inline-block;
+        border-bottom: 3px solid red;
+        padding-bottom: 0.5rem;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    .profile h5 {
+        font-size: 18px;
+        font-weight: 100;
+        letter-spacing: 3px;
+        color: #ccc;
+    }
+
+    .profile p {
+        font-size: 16px;
+        margin-top: 20px;
+        text-align: justify;
+    }
+
+    @media only screen and (max-width: 1150px) {
+        .profiles {
+            flex-direction: column;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile p {
+            text-align: center;
+            margin: 20px 60px 80px 60px;
+            font-size: 20px;
+        }
+    }
+
+    @media only screen and (max-width: 900px) {
+        .heading {
+            font-size: 40px;
+            color: white;
+            text-align: center;
+        }
+
+        .heading span {
+            font-size: 15px;
+        }
+
+        .profiles {
+            margin: 20px 0;
+        }
+
+        .profile p {
+            margin: 20px 10px 80px 10px;
+        }
+    }
+</style>
+
+<body>
+    <%- include('../partials/navbar')%>
+
+        <div class="container">
+            <h2 class="heading feature-title">Meet the Team</h2>
+
+            <div class="profiles">
+                <div class="profile">
+                    <img src="../../public/img/IMG_20210730_192942.jpg" class="profile-img">
+
+                    <h4 class="user-name">Shubhanjan Barai</h4>
+                    <h5>JIS College of Engineering</h5>
+                    <p>From the Department of Computer Science and Enginnering, worked on Frontend, Backend, and Database</p>
+                </div>
+                <div class="profile">
+                    <img src="../../public/img/20220530_112250.jpg" class="profile-img">
+
+                    <h3 class="user-name">Saunak Nandi</h3>
+                    <h5>JIS College of Engineering</h5>
+                    <p>From the Department of Computer Science and Engineering,worked on database and frontend </p>
+                </div>
+
+            </div>
+
+            <div class="profiles">
+                <div class="profile">
+                    <img src="../../public/img/RIYA DUTTA.jpg" class="profile-img">
+
+                    <h3 class="user-name">Riya Dutta</h3>
+                    <h5>JIS College of Engineering</h5>
+                    <p>From the Department of Computer Science and Engineering, worked on the Report and Frontend design</p>
+                </div>
+                <div class="profile">
+                    <img src="../../public/img/IMG-20220530-WA0002.jpg" class="profile-img">
+
+                    <h3 class="user-name">Sana Asgar</h3>
+                    <h5>JIS College of Engineering</h5>
+                    <p>From the Department of Computer Science and Engineering, worked on the Report and Frontend design</p>
+                </div>
+            </div>
+        </div>
+
+        <%- include('../partials/footer') %>
+</body>
+<%- include('../partials/footerLinks') %>
+
+</html>

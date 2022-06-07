@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
    <%- include('../partials/headerLinks') %>
-    <title>S-Cart | Girl's Section</title>
+    <title>S-Cart | Girls' Section</title>
 </head>
 <body>
     <%- include('../partials/navbar') %>
    <section class="products my-5">
        <div class="row text-center">
            <div class="col-12 fs-1 my-4">
-               <h4 class="top feature-title" style="color: black;">GIRL'S SECTION</h4>
+               <h4 class="top feature-title" style="color: black;">GIRLS' SECTION</h4>
                <!-- <p class="top"></p> -->
            </div>
        </div>
@@ -23,7 +23,7 @@
                    <p><%= item.itemName %></p>
                    <p class="price">&#8377;<%= item.itemPrice %></p>   
                    <form method="POST" action="/addtocart/<%= item._id %>">
-                       <button type="submit" class="bttn dis-btn">Put in Bag<i class="fas fa-shopping-bag ms-2"></i></button>
+                       <button type="submit" class="bttn dis-btn">Add to Cart<i class="fas fa-shopping-bag ms-2"></i></button>
                    </form>
                </div>
            <% })%>

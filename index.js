@@ -10,13 +10,12 @@ const path = require('path');
 const User = require('./models/User');
 const Product = require("./models/Product");
 const { Products, Cart } = require("./models/Cart");
+const { OrderedProduct, Order } = require("./models/Order");
 const CryptoJs = require('crypto-js');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
-const BoysProduct = require('./models/BoysProduct');
-const GirlsProduct = require('./models/GirlsProduct');
-const KidsProduct = require('./models/KidsProduct');
-const GiftsProduct = require('./models/GiftsProduct');
+const userDetails = require("./models/Details");
+
 dotenv.config();
 
 const staticPath = path.join(__dirname);
@@ -39,42 +38,17 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 
 app.get("/", async (req, res) => {
-    // const items = [
-    //     {
-    //         itemId: "001",
-    //         itemImage: "public/img/bag1.jpg",
-    //         itemName: "Item1",
-    //         itemPrice: "75"
-    //     },
-    //     {
-    //         itemId: "002",
-    //         itemImage: "public/img/bag2.jpg",
-    //         itemName: "Item2",
-    //         itemPrice: "75"
-    //     },
-    //     {
-    //         itemId: "003",
-    //         itemImage: "public/img/bag3.jpg",
-    //         itemName: "Item3",
-    //         itemPrice: "75"
-    //     },
-    //     {
-    //         itemId: "004",
-    //         itemImage: "public/img/bag4.jpg",
-    //         itemName: "Item4",
-    //         itemPrice: "75"
-    //     }
-    // ]
     const items = await Product.find({ category: "sample" });
     if (!req.cookies.jwt) {
-        return res.render("index", { status: "loggedOut", items: items, quantity: null });
+        return res.render("index", { status: "loggedOut", items: items, quantity: null, username: null });
     }
     const userCart = await Cart.find({ username: req.cookies.username });
+    res.cookie("page","sample");
     if (userCart[0] == undefined) {
-        return res.render("index", { status: "loggedIn", items: items, quantity: null })
+        return res.render("index", { status: "loggedIn", items: items, quantity: null, username: req.cookies.username})
     }
     const cartQuantity = userCart[0].products.length;
-    res.render("index", { status: "loggedIn", items: items, quantity: cartQuantity })
+    res.render("index", { status: "loggedIn", items: items, quantity: cartQuantity, username: req.cookies.username })
 });
 
 //boys ----------------------------------------------------
@@ -84,6 +58,7 @@ app.get("/boys", async (req, res) => {
         return res.render("boys", { status: "loggedOut", boysItems: boysItems });
     }
     const userCart = await Cart.find({ username: req.cookies.username });
+    res.cookie("page","boys");
     //console.log(userCart)
     if (userCart.length == 0) {
         return res.render("boys", { status: "loggedIn", boysItems: boysItems, quantity: null });
@@ -130,6 +105,7 @@ app.get("/girls", async (req, res) => {
         return res.render("girls", { status: "loggedOut", girlsItems: girlsItems });
     }
     const userCart = await Cart.find({ username: req.cookies.username });
+    res.cookie("page","girls");
     if (userCart.length == 0) {
         return res.render("girls", { status: "loggedIn", girlsItems: girlsItems, quantity: null });
     }
@@ -160,6 +136,7 @@ app.get("/kids", async (req, res) => {
         return res.render("kids", { status: "loggedOut", kidsItems: kidsItems });
     }
     const userCart = await Cart.find({ username: req.cookies.username });
+    res.cookie("page","kids");
     if (userCart.length == 0) {
         return res.render("kids", { status: "loggedIn", kidsItems: kidsItems, quantity: null });
     }
@@ -190,6 +167,7 @@ app.get("/gifts", async (req, res) => {
         return res.render("gifts", { status: "loggedOut", giftsItems: giftsItems });
     }
     const userCart = await Cart.find({ username: req.cookies.username });
+    res.cookie("page","gifts");
     if (userCart.length == 0) {
         return res.render("gifts", { status: "loggedIn", giftsItems: giftsItems, quantity: null });
     }
@@ -233,8 +211,13 @@ app.post("/register", async (req, res) => {
         password: CryptoJs.AES.encrypt(req.body.password, process.env.PASS_SECRET).toString(),
     });
 
+    const orderedProduct = new Order({
+        username: req.body.username
+    })
+
     try {
         const savedUser = await newUser.save();
+        const savedOrder = await orderedProduct.save();
         res.render("register", { message: "User Added Successfully!!", status: "loggedOut", quantity: null });
         //res.status(201).json(savedUser);
     }
@@ -329,7 +312,22 @@ app.post("/addtocart/:itemid", async (req, res) => {
             userCart.products.push(product);
             await userCart.save();
         }
-        res.redirect("/");
+
+        if(req.cookies.page === "sample"){
+            res.redirect("/");
+        }
+        else if(req.cookies.page === "boys"){
+            res.redirect("/boys");
+        }
+        else if(req.cookies.page === "girls"){
+            res.redirect("/girls");
+        }
+        else if(req.cookies.page === "kids") {
+            res.redirect("/kids");
+        }
+        else if(req.cookies.page === "gifts") {
+            res.redirect("/gifts");
+        }
     }
     catch (err) {
         console.log(err);
@@ -347,31 +345,157 @@ app.get("/cart", async (req, res) => {
     const cartQuantity = userCart[0].products.length;
 
     let cart = [];
-    const getProductDetails = async (productId) => {
+    const getProductDetails = async (productId, cartId) => {
         const productDetail = await Product.find({ _id: productId });
         let obj = {
+            id: cartId,
             name: productDetail[0].itemName,
             image: productDetail[0].itemImage,
-            price: productDetail[0].itemPrice
+            price: productDetail[0].itemPrice,
         };
         return obj;
     }
     const newFunc = async () => {
+        let sum = 0;
         for (let i = 0; i < userCart[0].products.length; i++) {
             const productId = userCart[0].products[i].productId;
-            const details = await getProductDetails(productId);
-            //console.log(details);
+            const cartId = userCart[0].products[i]._id;
+            const details = await getProductDetails(productId, cartId);
+            // console.log(details);
+            sum += parseInt(details.price);
+            // console.log(sum);
             cart = [
                 ...cart,
                 details
-            ];  
+            ];
         }
-        //console.log(cart);
-        return res.render("cart", { status: "loggedIn", quantity: cartQuantity, products: cart });
+        // console.log(sum);
+        // console.log(cart);
+        return res.render("cart", { status: "loggedIn", quantity: cartQuantity, products: cart, totalPrice: sum });
     }
     newFunc();
+});
+
+app.post("/cart/:id", async (req, res) => {
+    try{
+        await Cart.updateOne({ username: req.cookies.username }, { '$pull': { 'products': { "_id": req.params.id } } });
+        res.redirect("/cart");
+    }
+    catch(err){
+        console.log(err);
+    }
 })
 
+app.get("/checkout", async (req, res) => {
+    if (!req.cookies.jwt) {
+        return res.render("checkout", { status: "loggedOut", quantity: null })
+    }
+    const userCart = await Cart.find({ username: req.cookies.username });
+    if (userCart.length == 0) {
+        return res.render("cart", { status: "loggedIn", quantity: null, products: null });
+    }
+    const cartQuantity = userCart[0].products.length;
+    return res.render("checkout", { status: "loggedIn", quantity: cartQuantity })
+});
+
+app.post("/checkout", async (req, res) => {
+    const userDetailsforCheckout = new userDetails({
+        name : req.body.cname,
+        phone: req.body.cnumber,
+        address: req.body.caddress,
+        landmark: req.body.clandmark,
+        pin: req.body.cpin
+    })
+    try {
+    await userDetailsforCheckout.save();
+    }
+    catch(err) {
+        console.log(err);
+    }
+    res.cookie("checkout", "done");
+    res.redirect("/payment");
+})
+
+app.get("/payment", async (req, res) => {
+    if (!req.cookies.jwt) {
+        return res.render("payment", { status: "loggedOut", quantity: null });
+    }
+    if(req.cookies.checkout === "done"){
+        const userCart = await Cart.find({ username: req.cookies.username });
+        if (userCart.length == 0) {
+            return res.render("cart", { status: "loggedIn", quantity: null, products: null});
+        }
+        const cartQuantity = userCart[0].products.length;
+        const productOrderedByUser = await Order.findOne({username: req.cookies.username});
+        let sum = 0;
+        for(let i=0;i<productOrderedByUser.orderedProduct.length; i++){
+            const productDetails = await Product.findOne({_id: productOrderedByUser.orderedProduct[i].productId});
+            sum = sum + parseInt(productDetails.itemPrice);
+        }
+        return res.render("payment", { status: "loggedIn", quantity: cartQuantity, totalPrice: sum });
+    }
+    return res.redirect("/checkout");
+});
+
+app.get("/onlinePay", (req,res) =>{
+    res.render("onlinePay");
+});
+
+app.get("/success", async (req, res) => {
+    //res.render("success", {status: null, quantity: null});
+    const userOrder = await Order.findOne({username: req.cookies.username});
+    const userCart = await Cart.findOne({ username: req.cookies.username });
+    for(let i=0;i<userCart.products.length;i++){
+        let itemId = userCart.products[i].productId;
+        const orderedProduct = new OrderedProduct({
+            productId: itemId
+        });
+        userOrder.orderedProduct.push(orderedProduct);
+    }
+    await userOrder.save();
+
+    await Cart.update({}, { $set : {"products": [] }});
+
+    res.clearCookie("checkout");
+    res.render("success");
+});
+
+app.get("/orders", async (req,res) => {
+    if (!req.cookies.jwt) {
+        return res.redirect("/")
+    }
+    
+    const productOrderedByUser = await Order.findOne({username: req.cookies.username});
+    let orders = [];
+    let sum = 0;
+    for(let i=0;i<productOrderedByUser.orderedProduct.length; i++){
+        const productDetails = await Product.findOne({_id: productOrderedByUser.orderedProduct[i].productId});
+        let obj = {
+            name: productDetails.itemName,
+            image: productDetails.itemImage,
+            price: productDetails.itemPrice,
+        };
+        sum = sum + parseInt(obj.price);
+        orders.push(obj);
+    }
+    res.render("orders", {status: "loggedIn", quantity: null, products: orders, totalPrice: sum});
+})
+
+app.get("/onlinepay", (req,res) => {
+    res.render("/onlinePay", {status: null, quantity: null});
+});
+app.get("/about", (req, res) => {
+   if(!req.cookies.jwt) {
+       res.render("about", {status: "loggedOut", quantity: null});
+   }
+   res.render("about", {status: "loggedIn", quantity: null});
+});
+app.get("/contact", (req,res) => {
+    if(!req.cookies.jwt) {
+        res.render("contact", {status: "loggedOut", quantity: null});
+    }
+    res.render("contact", {status: "loggedIn", quantity: null});
+});
 app.get("/logout", (req, res) => {
     res.clearCookie("jwt");
     res.clearCookie("username");

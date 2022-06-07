@@ -71,6 +71,12 @@ nav ul li a i {
   border-radius: 50%;
 }
 
+@media(max-width: 576px) {
+  .inputname {
+    size: 30;
+  }
+}
+
 .img-fluid-logo {
   height: 47px;
   width: 50px;
@@ -82,7 +88,7 @@ nav ul li a i {
 }
 .img-fluid:hover {
   zoom: 200%;
-    transition: 5s;
+    /* transition: 5s; */
 }
 .image-kids {
   height: 601px;
@@ -703,6 +709,12 @@ body{
   align-items: center;
 }
 .registerForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loginForm{
   display: flex;
   flex-direction: column;
   justify-content: center;

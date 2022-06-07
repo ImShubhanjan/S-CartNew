@@ -12,6 +12,11 @@
 
     <section class="home">
         <div class="container-fluid">
+            <% if(username){ %>
+                <div>
+                    <h2 class="light-text">Welcome <%= username %></h2> 
+                </div>
+            <% } %>
             <div class="row text-md-start text-center">
                 <div class="col-lg-4">
                     <h6 class="feature-title text-uppercase mt-5 pt-md-5 rt">Kid's Zone</h6>
@@ -101,7 +106,7 @@
                     <p><%= item.itemName %></p>
                     <p class="price">&#8377;<%= item.itemPrice %></p>   
                     <form method="POST" action="/addtocart/<%= item._id %>">
-                        <button type="submit" class="bttn dis-btn">Put in Bag<i class="fas fa-shopping-bag ms-2"></i></button>
+                        <button type="submit" class="bttn dis-btn">Add to Cart<i class="fas fa-shopping-bag ms-2"></i></button>
                     </form>
                 </div>
             <% })%>
